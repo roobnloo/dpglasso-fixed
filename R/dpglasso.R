@@ -3,7 +3,7 @@ function(Sigma, X=NULL,invX=NULL,rho,outer.Maxiter=100,obj.seq=FALSE,outer.tol=1
 
 if (is.null(Sigma)) { print("Sigma is required as input"); return(); } else { p=nrow(Sigma) }
 
-check1<-(nrow(Sigma)==ncol(Sigma))&&(Sigma==t(Sigma));
+check1<-(nrow(Sigma)==ncol(Sigma))&&all(Sigma==t(Sigma));
 if (check1==0) { print("Sigma sould be square and symmetric"); return(); } 
 
 if(is.null(X))  X= diag( 1/(rep(rho,p) + diag(Sigma)) ) 
